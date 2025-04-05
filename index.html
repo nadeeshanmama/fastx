@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fast-x</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        document.addEventListener('contextmenu', event => event.preventDefault());
+        document.addEventListener('keydown', event => {
+            if (event.ctrlKey && (
+                event.key === 'u' || 
+                event.key === 's' ||
+                event.key === 'i' ||
+                event.key === 'c' ||
+                event.key === 'j'
+            )) {
+                event.preventDefault();
+            }
+            if (event.key === 'F12') {
+                event.preventDefault();
+            }
+        });
+    </script>
+    <!-- Add this right after your existing stylesheets -->
+    <style>
+        .welcome-popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.7);
+            background: rgba(26, 26, 26, 0.95);
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 51, 51, 0.2);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .welcome-popup.active {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .popup-logo {
+            width: 120px;
+            height: 120px;
+            margin-bottom: 1.5rem;
+            animation: popupLogoFloat 3s ease-in-out infinite;
+        }
+
+        .telegram-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: #0088cc;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            margin: 1.5rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .telegram-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 136, 204, 0.3);
+        }
+
+        .telegram-icon {
+            width: 24px;
+            height: 24px;
+        }
+
+        .contact-dev {
+            color: var(--text-gray);
+            text-decoration: none;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+            display: inline-block;
+            transition: color 0.3s ease;
+        }
+
+        .contact-dev:hover {
+            color: var(--accent-red);
+        }
+
+        .close-popup {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            color: var(--text-gray);
+            cursor: pointer;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .close-popup:hover {
+            color: var(--accent-red);
+        }
+
+        @keyframes popupLogoFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+    </style>
+</head>
+<body>
+    <div class="animated-background">
+        <div class="particles"></div>
+    </div>
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="img/logo.png" alt="Digital Store Logo" class="logo-img">
+                <span></span>
+            </div>
+            <button class="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#tutorials">How to use</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="typing-effect">Fast-x Connection</h1>
+                    <p class="hero-subtitle">Join us to speed up your slow connection. We have the right plans for you, choose and enjoy a new experience.</p>
+                    <div class="hero-features">
+                        <span><i class="fas fa-check-circle"></i> High speed server</span>
+                        <span><i class="fas fa-check-circle"></i> No reconnecting</span>
+                        <span><i class="fas fa-check-circle"></i> Premium support</span>
+                    </div>
+                    <div class="hero-cta">
+                        <button class="primary-btn">Get started free</button>
+                        <div class="rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span>5-STAR RATING</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-image">
+                   
+                    
+                    <!-- Floating card remains the same -->
+                    
+                        
+                       
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="products" class="products">
+            <h2>Our Products</h2>
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-header">
+                        <img src="img/dialog.png" alt="Product 1">
+                        <h3>Dialog (zoom)</h3>
+                        <p class="price">$49.99</p>
+                    </div>
+                    <div class="product-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i> Feature 1</li>
+                            <li><i class="fas fa-check"></i> Feature 2</li>
+                            <li><i class="fas fa-check"></i> Feature 3</li>
+                        </ul>
+                    </div>
+                    <a href="form.html"><button class="get-started">Get Started</button></a>
+                </div>
+                <div class="product-card">
+                    <div class="product-header">
+                        <img src="img/hutch.png" alt="Product 2">
+                        <h3>Unlimited (zoom)</h3>
+                        <p class="price">$79.99</p>
+                    </div>
+                    <div class="product-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i> Feature 1</li>
+                            <li><i class="fas fa-check"></i> Feature 2</li>
+                            <li><i class="fas fa-check"></i> Feature 3</li>
+                            <li><i class="fas fa-check"></i> Feature 4</li>
+                        </ul>
+                    </div>
+                    <a href="form.html"><button class="get-started">Get Started</button></a>
+                </div>
+                <div class="product-card">
+                    <div class="product-header">
+                        <img src="img/slt.png" alt="Product 2">
+                        <h3>Mobitel 222 (zoom)</h3>
+                        <p class="price">$79.99</p>
+                    </div>
+                    <div class="product-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i> Feature 1</li>
+                            <li><i class="fas fa-check"></i> Feature 2</li>
+                            <li><i class="fas fa-check"></i> Feature 3</li>
+                            <li><i class="fas fa-check"></i> Feature 4</li>
+                        </ul>
+                    </div>
+                    <a href="form.html"><button class="get-started">Get Started</button></a>
+                </div>
+            </div>
+        </section>
+
+        <section id="tutorials" class="tutorials">
+            <h2>How to Use</h2>
+            <div class="tutorial-grid">
+                <div class="tutorial-card">
+                    <div class="tutorial-icon">
+                        <i class="fas fa-play-circle"></i>
+                    </div>
+                    <h3>Getting Started</h3>
+                    <p>Learn the basics of using our products</p>
+                </div>
+                <div class="tutorial-card">
+                    <div class="tutorial-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <h3>Advanced Guide</h3>
+                    <p>Master advanced features and techniques</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>About Us</h4>
+                <p>Join us to speed up your slow connection. We have the right plans for you, choose and enjoy a new experience.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#tutorials">Tutorials</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contact Info</h4>
+                <ul class="contact-info">
+                    <li><i class="fas fa-map-marker-alt"></i> 123 Digital Street, Tech City</li>
+                    <li><i class="fas fa-phone"></i> (123) 456-7890</li>
+                    <li><i class="fas fa-envelope"></i> contact@example.com</li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Newsletter</h4>
+                <p>Subscribe to our newsletter for updates and exclusive offers.</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Enter your email">
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Digital Products Store. All rights reserved.</p>
+            <p>Web developer by Nadeeshan Sulakshana</p>
+        </div>
+        
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+    <!-- Add this right after the body tag -->
+    <div class="welcome-popup">
+        <button class="close-popup"><i class="fas fa-times"></i></button>
+        <img src="img/logo.png" alt="Fast-x Logo" class="popup-logo">
+        <h2>Welcome to Fast-x</h2>
+        <p>Join our Telegram community for exclusive updates and support!</p>
+        <a href="https://t.me/your_telegram_group" class="telegram-btn" target="_blank">
+            <i class="fab fa-telegram-plane"></i>
+            Join Telegram Group
+        </a>
+        <br>
+        <a href="https://wa.me/94718774025" class="contact-dev" target="_blank">
+            Contact Developer
+        </a>
+    </div>
+
+    <!-- Add this right before the closing body tag -->
+    <script>
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.querySelector('.welcome-popup').classList.add('active');
+            }, 1500);
+        });
+
+        document.querySelector('.close-popup').addEventListener('click', () => {
+            document.querySelector('.welcome-popup').classList.remove('active');
+        });
+    </script>
+
+    <style>
+        .welcome-popup {
+            width: 90%;
+            max-width: 450px;
+            padding: 3rem;
+        }
+
+        .popup-logo {
+            width: 150px;
+            height: 150px;
+            margin-bottom: 2rem;
+        }
+
+        .welcome-popup h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+            color: var(--accent-red);
+        }
+
+        .welcome-popup p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .telegram-btn {
+            padding: 1.2rem 2.5rem;
+            font-size: 1.1rem;
+        }
+
+        .contact-dev {
+            font-size: 1rem;
+            margin-top: 1.5rem;
+        }
+    </style>
+        .telegram-btn i {
+            font-size: 1.5rem;
+            margin-right: 0.5rem;
+        }
+        
+        /* Remove the old telegram-icon class since we're not using an image anymore */
+        .telegram-icon {
+            display: none;
+        }
+    </style>

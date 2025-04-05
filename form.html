@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- ... existing head content ... -->
+    <script>
+        document.addEventListener('contextmenu', event => event.preventDefault());
+        document.addEventListener('keydown', event => {
+            if (event.ctrlKey && (
+                event.key === 'u' || 
+                event.key === 's' ||
+                event.key === 'i' ||
+                event.key === 'c' ||
+                event.key === 'j'
+            )) {
+                event.preventDefault();
+            }
+            if (event.key === 'F12') {
+                event.preventDefault();
+            }
+        });
+    </script>
+</head>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Form</title>
+    <style>
+        :root {
+            --dark-bg: #1a1a1a;
+            --darker-bg: #121212;
+            --accent-red: #ff3333;
+            --text-white: #ffffff;
+            --text-gray: #cccccc;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: var(--text-white);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        .form-container {
+            background-color: var(--darker-bg);
+            padding: 2.5rem;
+            border-radius: 1.5rem;
+            width: 100%;
+            max-width: 600px;
+            border: 1px solid rgba(255, 51, 51, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .form-title {
+            color: var(--accent-red);
+            font-size: 2.2rem;
+            margin-bottom: 2.5rem;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .form-group {
+            margin-bottom: 1.8rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.8rem;
+            color: var(--text-gray);
+            font-size: 0.95rem;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid rgba(255, 51, 51, 0.2);
+            border-radius: 0.8rem;
+            background-color: rgba(18, 18, 18, 0.6);
+            color: var(--text-white);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--accent-red);
+            box-shadow: 0 0 0 2px rgba(255, 51, 51, 0.1);
+        }
+
+        .submit-btn {
+            background-color: var(--accent-red);
+            color: var(--text-white);
+            border: none;
+            padding: 1.2rem 2rem;
+            border-radius: 0.8rem;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .submit-btn:hover {
+            background-color: #ff0000;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(255, 51, 51, 0.2);
+        }
+
+        .popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: var(--accent-red);
+            color: var(--text-white);
+            padding: 1.2rem 2.5rem;
+            border-radius: 0.8rem;
+            display: none;
+            animation: fadeInOut 2s ease-in-out;
+            font-weight: 600;
+            box-shadow: 0 10px 30px rgba(255, 51, 51, 0.3);
+        }
+
+        @keyframes fadeInOut {
+            0% { opacity: 0; transform: translate(-50%, -40%); }
+            20% { opacity: 1; transform: translate(-50%, -50%); }
+            80% { opacity: 1; transform: translate(-50%, -50%); }
+            100% { opacity: 0; transform: translate(-50%, -60%); }
+        }
+
+        @media (max-width: 768px) {
+            .form-container {
+                margin: 1rem;
+                padding: 1.5rem;
+            }
+
+            .form-title {
+                font-size: 1.8rem;
+            }
+        }
+
+        body {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+img {
+    pointer-events: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1 class="form-title">Contact Form</h1>
+        <form id="contactForm" onsubmit="sendToWhatsApp(event)">
+            <div class="form-group">
+                <label for="firstName">First Name</label>
+                <input type="text" id="firstName" name="firstName" required>
+            </div>
+
+            <div class="form-group">
+                <label for="lastName">Last Name</label>
+                <input type="text" id="lastName" name="lastName" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="address">Address</label>
+                <textarea id="address" name="address" rows="3" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" required>
+            </div>
+            <div class="form-group">
+                <label for="district">Select your Isp</label>
+                <select id="district" name="district" required>
+                    <option value="">Select a district</option>
+                    <option value="Ampara">Dialog</option>
+                    <option value="Anuradhapura">Mobitel</option>
+                    <option value="Anuradhapura">Hutch</option>
+                    
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="district">District</label>
+                <select id="district" name="district" required>
+                    <option value="">Select a district</option>
+                    <option value="Ampara">Ampara</option>
+                    <option value="Anuradhapura">Anuradhapura</option>
+                    <option value="Badulla">Badulla</option>
+                    <option value="Batticaloa">Batticaloa</option>
+                    <option value="Colombo">Colombo</option>
+                    <option value="Galle">Galle</option>
+                    <option value="Gampaha">Gampaha</option>
+                    <option value="Hambantota">Hambantota</option>
+                    <option value="Jaffna">Jaffna</option>
+                    <option value="Kalutara">Kalutara</option>
+                    <option value="Kandy">Kandy</option>
+                    <option value="Kegalle">Kegalle</option>
+                    <option value="Kilinochchi">Kilinochchi</option>
+                    <option value="Kurunegala">Kurunegala</option>
+                    <option value="Mannar">Mannar</option>
+                    <option value="Matale">Matale</option>
+                    <option value="Matara">Matara</option>
+                    <option value="Monaragala">Monaragala</option>
+                    <option value="Mullaitivu">Mullaitivu</option>
+                    <option value="Nuwara Eliya">Nuwara Eliya</option>
+                    <option value="Polonnaruwa">Polonnaruwa</option>
+                    <option value="Puttalam">Puttalam</option>
+                    <option value="Ratnapura">Ratnapura</option>
+                    <option value="Trincomalee">Trincomalee</option>
+                    <option value="Vavuniya">Vavuniya</option>
+                </select>
+            </div>
+
+            <button type="submit" class="submit-btn">Submit</button>
+        </form>
+    </div>
+
+    <div id="successPopup" class="popup">Sending Successful</div>
+
+    <script>
+        function sendToWhatsApp(event) {
+            event.preventDefault();
+            
+            // Get form values
+            const firstName = document.getElementById('firstName').value;
+            const lastName = document.getElementById('lastName').value;
+            const email = document.getElementById('email').value;
+            const address = document.getElementById('address').value;
+            const phone = document.getElementById('phone').value;
+            const district = document.getElementById('district').value;
+
+            // Format message
+            const message = `*New Contact Form Submission*%0A
+First Name: ${firstName}%0A
+Last Name: ${lastName}%0A
+Email: ${email}%0A
+Address: ${address}%0A
+Phone: ${phone}%0A
+District: ${district}`;
+
+            // WhatsApp URL with your number and formatted message
+            const whatsappURL = `https://wa.me/94718774025?text=${message}`;
+
+            // Open WhatsApp in new tab
+            window.open(whatsappURL, '_blank');
+
+            // Show success popup
+            const popup = document.getElementById('successPopup');
+            popup.style.display = 'block';
+            
+            // Hide popup after animation
+            setTimeout(() => {
+                popup.style.display = 'none';
+            }, 2000);
+        }
+    </script>
+</body>
+</html>
