@@ -358,9 +358,12 @@ img {
             Phone: ${phone}%0A
             District: ${district}`;
 
-            // WhatsApp URL with your number and formatted message
-            const whatsappURL = `https://wa.me/94718774025?text=${message}`;
-
+            // First instance in the first sendToWhatsApp function
+            window.open(`https://wa.me/94770557769?text=${message}`, '_blank');
+            
+            // Second instance in the second sendToWhatsApp function
+            const whatsappURL = `https://wa.me/94770557769?text=${message}`;
+            
             // Open WhatsApp in new tab
             window.open(whatsappURL, '_blank');
 
