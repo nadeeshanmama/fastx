@@ -173,7 +173,11 @@ img {
 <body>
     <div class="form-container">
         <h1 class="form-title">Contact Form</h1>
+        
         <form id="contactForm" onsubmit="sendToWhatsApp(event)">
+            <input type="hidden" id="selectedPlan" name="selectedPlan">
+            <input type="hidden" id="selectedData" name="selectedData">
+            <input type="hidden" id="selectedPrice" name="selectedPrice">
             <div class="form-group">
                 <label for="firstName">First Name</label>
                 <input type="text" id="firstName" name="firstName" required>
@@ -201,7 +205,7 @@ img {
             <div class="form-group">
                 <label for="district">Select your Isp</label>
                 <select id="district" name="district" required>
-                    <option value="">Select a district</option>
+                    
                     <option value="Ampara">Dialog</option>
                     <option value="Anuradhapura">Mobitel</option>
                     <option value="Anuradhapura">Hutch</option>
@@ -245,7 +249,92 @@ img {
         </form>
     </div>
 
-    <div id="successPopup" class="popup">Sending Successful</div>
+    <style>
+        .selected-plan-info {
+            background: rgba(255, 51, 51, 0.1);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(255, 51, 51, 0.2);
+        }
+        
+        .selected-plan-info p {
+            margin: 0.5rem 0;
+            color: var(--text-white);
+        }
+        
+        .selected-plan-info span {
+            color: var(--accent-red);
+            font-weight: bold;
+        }
+    </style>
+
+    <!-- Remove the duplicate sendToWhatsApp function at the bottom and keep only this one -->
+    <script>
+        window.addEventListener('load', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const plan = urlParams.get('plan');
+            const data = urlParams.get('data');
+            const price = urlParams.get('price');
+    
+            if (plan && data && price) {
+                document.getElementById('planName').textContent = decodeURIComponent(plan);
+                document.getElementById('dataAmount').textContent = decodeURIComponent(data);
+                document.getElementById('planPrice').textContent = decodeURIComponent(price);
+                
+                // Set hidden inputs
+                document.getElementById('selectedPlan').value = decodeURIComponent(plan);
+                document.getElementById('selectedData').value = decodeURIComponent(data);
+                document.getElementById('selectedPrice').value = decodeURIComponent(price);
+            }
+        });
+    
+        function sendToWhatsApp(event) {
+            event.preventDefault();
+            
+            const selectedPlan = document.getElementById('selectedPlan').value;
+            const selectedData = document.getElementById('selectedData').value;
+            const selectedPrice = document.getElementById('selectedPrice').value;
+            const firstName = document.getElementById('firstName').value;
+            const lastName = document.getElementById('lastName').value;
+            const email = document.getElementById('email').value;
+            const address = document.getElementById('address').value;
+            const phone = document.getElementById('phone').value;
+            const district = document.getElementById('district').value;
+    
+            const message = `*New Order Details*%0A
+            ----------------------------------------%0A
+            *Selected Plan:* ${selectedPlan}%0A
+            *Data Package:* ${selectedData}%0A
+            *Price:* Rs. ${selectedPrice}.00%0A
+            ----------------------------------------%0A
+            *Customer Details:*%0A
+            First Name: ${firstName}%0A
+            Last Name: ${lastName}%0A
+            Email: ${email}%0A
+            Address: ${address}%0A
+            Phone: ${phone}%0A
+            District: ${district}`;
+    
+            window.open(`https://wa.me/94718774025?text=${message}`, '_blank');
+            
+            const popup = document.getElementById('successPopup');
+            popup.style.display = 'block';
+            setTimeout(() => {
+                popup.style.display = 'none';
+            }, 2000);
+        }
+    </script>
+    </div>
+
+    <div id="successPopup" class="popup">Sending Successful
+        <p>PAYMENT METHODS💵
+
+            🔺BANK TRANSFER  💰
+            🔺CARD / RELOAD 🔴
+            
+            🔴 කාඩ් වලින් හරි Reload වලින් pay කරනවනම් අමතර 50ක් added⚙️</p>
+    </div>
 
     <script>
         function sendToWhatsApp(event) {
@@ -258,15 +347,16 @@ img {
             const address = document.getElementById('address').value;
             const phone = document.getElementById('phone').value;
             const district = document.getElementById('district').value;
+            
 
             // Format message
             const message = `*New Contact Form Submission*%0A
-First Name: ${firstName}%0A
-Last Name: ${lastName}%0A
-Email: ${email}%0A
-Address: ${address}%0A
-Phone: ${phone}%0A
-District: ${district}`;
+            First Name: ${firstName}%0A
+            Last Name: ${lastName}%0A
+            Email: ${email}%0A
+            Address: ${address}%0A
+            Phone: ${phone}%0A
+            District: ${district}`;
 
             // WhatsApp URL with your number and formatted message
             const whatsappURL = `https://wa.me/94718774025?text=${message}`;

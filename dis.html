@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Post</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #ff3333;
+            --text-color: #333;
+            --bg-color: #f9f9f9;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            opacity: 0;
+            animation: fadeIn 1s ease-in forwards;
+        }
+
+        .article {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            transform: translateY(20px);
+            animation: slideUp 0.8s ease-out forwards;
+        }
+
+        .article-header {
+            margin-bottom: 2rem;
+        }
+
+        .article-title {
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .article-meta {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .article-content {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+
+        .article-image {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            transition: transform 0.3s ease;
+        }
+
+        .article-image:hover {
+            transform: scale(1.02);
+        }
+
+        .tags {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .tag {
+            background: var(--secondary-color);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .tag:hover {
+            background-color: var(--primary-color);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from { 
+                transform: translateY(20px);
+                opacity: 0;
+            }
+            to { 
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <article class="article">
+            <header class="article-header">
+                <h1 class="article-title">කොහොමද හදාගන්නේ?</h1>
+                <div class="article-meta">
+                    <span>Published on: April 07, 2025</span>
+                    <span> • </span>
+                    <span>By: Thisaru udhara</span>
+                </div>
+            </header>
+
+            <div class="article-content">
+                <p>Data ප්‍රග්නෙට හොද විසදුමක් විදිහට මේ Free Internet Method එක හදුන්වා දෙන්න පුළුවන්. Online Study කරන අයට , Pc Games Play කරන , Live Stream එහෙම කරන අයට මේ Free Internet Method එක ගොඩක් ප්‍රයෝජනවත්,</p>
+                
+                <img src="img/vpn.jpg" alt="Web Development" class="article-image">
+                
+                <p>මේ උදාහරණයක් විදිහට හිතන්න ඔයාට තියෙන්නේ Zoom Package එක විතරයි කියලා ඉතින් ඔයාලට YouTube එකේ Lesson Video එකක් බලන්න නම් වෙනම Data දාන්න වෙනව, හැබැයි ඔයා මේ  Free Internet Method එක Use කරනවනම් ඔයාට Zoom Package එක විතරක් තිබිල උනත් YouTube එකේ Videos බලන්න පුළුවන් හරියටම කිව්වොත් මේ විදිහෙන් පුළුවන් ඔයාල Active කරලා තියෙන Package එකේ තියෙන Data සාමාන්‍ය Data Card එකක් දැම්ම වගේ ඕනෙම දෙයකට Use කරන්න පුළුවන් Method එක Zoom වගේම අනිත් Packages වලටත් වැඩ කරනවා. ( හැම එකටම නෑ Limited Packages ටිකකට විතරයි පුලුවන් )</p>
+                
+                <p>ඒ වගේම මේ විදියට ඔයාලට TB ගණන් වලින් උනත් Data අරන් Use කරන්න පුලුවන්. ඉතාම අඩු මුදලකට.</p>
+            </div>
+
+            <div class="tags">
+                <a href="https://sourceforge.net/projects/netmodhttp/"><span class="tag">Download App for pc</span></a>
+                <a href="https://play.google.com/store/apps/details?id=com.netmod.syna&hl=en_SG&pli=1"><span class="tag">Download App for Mobile</span></a>
+                
+            </div>
+        </article>
+    </div>
+</body>
+</html>
