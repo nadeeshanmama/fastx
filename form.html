@@ -202,16 +202,9 @@ img {
                 <label for="phone">Phone Number</label>
                 <input type="tel" id="phone" name="phone" required>
             </div>
-            <div class="form-group">
-                <label for="district">Select your Isp</label>
-                <select id="district" name="district" required>
-                    
-                    <option value="Ampara">Dialog</option>
-                    <option value="Anuradhapura">Mobitel</option>
-                    <option value="Anuradhapura">Hutch</option>
-                    
-                </select>
-            </div>
+            
+
+            
 
             <div class="form-group">
                 <label for="district">District</label>
@@ -245,6 +238,43 @@ img {
                 </select>
             </div>
 
+            <div class="form-group">
+                <label for="isp">Select your ISP</label>
+                <select id="isp" name="isp" required>
+                    <option value="">Select an ISP</option>
+                    <option value="Dialog">Dialog</option>
+                    <option value="Mobitel">Mobitel</option>
+                    <option value="Hutch">Hutch</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="dataAmount">Select Data Amount</label>
+                <select id="dataAmount" name="dataAmount" required>
+                    <option value="">Select Data Amount</option>
+                    <option value="5GB">100GB</option>
+                    <option value="10GB">200GB</option>
+                    <option value="15GB">300GB</option>
+                    <option value="20GB">400GB</option>
+                    <option value="30GB">UnlimitedGB</option>
+                    
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="plan">Select Plan Type</label>
+                <select id="plan" name="plan" required>
+                    <option value="">Select a Plan</option>
+                    <option value="Any Time">Dialog (Zoom)</option>
+                    <option value="Night Time">Mobitel (Zoom)</option>
+                    <option value="Work From Home">Hutch Zoom & Gaming</option>
+                    <option value="Zoom Package">Slt fiber Zoom & Netflix</option>
+                    <option value="YouTube Package">Airtel (Zoom)</option>
+                    <option value="Social Media">Airtel (148/498/909)Bypass</option>
+                </select>
+            </div>
+
+            
             <button type="submit" class="submit-btn">Submit</button>
         </form>
     </div>
