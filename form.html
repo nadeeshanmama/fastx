@@ -370,38 +370,40 @@ img {
         function sendToWhatsApp(event) {
             event.preventDefault();
             
-            // Get form values
+            // Get all form values
             const firstName = document.getElementById('firstName').value;
             const lastName = document.getElementById('lastName').value;
             const email = document.getElementById('email').value;
             const address = document.getElementById('address').value;
             const phone = document.getElementById('phone').value;
             const district = document.getElementById('district').value;
-            
+            const isp = document.getElementById('isp').value;
+            const dataAmount = document.getElementById('dataAmount').value;
+            const plan = document.getElementById('plan').value;
 
-            // Format message
-            const message = `*New Contact Form Submission*%0A
+            // Format message with all details
+            const message = `*New Order Details*%0A
+            ----------------------------------------%0A
+            *Customer Details:*%0A
             First Name: ${firstName}%0A
             Last Name: ${lastName}%0A
             Email: ${email}%0A
             Address: ${address}%0A
             Phone: ${phone}%0A
-            District: ${district}`;
+            District: ${district}%0A
+            ----------------------------------------%0A
+            *Package Details:*%0A
+            ISP Provider: ${isp}%0A
+            Data Amount: ${dataAmount}%0A
+            Selected Plan: ${plan}%0A
+            ----------------------------------------`;
 
-            // First instance in the first sendToWhatsApp function
+            // Open WhatsApp with the message
             window.open(`https://wa.me/94770557769?text=${message}`, '_blank');
-            
-            // Second instance in the second sendToWhatsApp function
-            const whatsappURL = `https://wa.me/94770557769?text=${message}`;
-            
-            // Open WhatsApp in new tab
-            window.open(whatsappURL, '_blank');
 
             // Show success popup
             const popup = document.getElementById('successPopup');
             popup.style.display = 'block';
-            
-            // Hide popup after animation
             setTimeout(() => {
                 popup.style.display = 'none';
             }, 2000);

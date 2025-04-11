@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Developer Profile</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --dark-bg: #1a1a1a;
+            --darker-bg: #242424;
+            --accent-red: #ff3333;
+            --text-white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: var(--text-white);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;  /* Add this */
+            align-items: center;
+            gap: 2rem;              /* Add this */
+            padding: 2rem 0;        /* Add this */
+            overflow-y: auto;       /* Change from hidden to auto */
+            overflow-x: hidden;     /* Keep horizontal overflow hidden */
+        }
+
+        .profile-container {
+            background-color: var(--darker-bg);
+            border-radius: 20px;
+            padding: 3rem;
+            max-width: 600px;
+            width: 90%;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 0 30px rgba(255, 51, 51, 0.2);
+            animation: fadeIn 1s ease-out;
+            margin: 1rem 0;         /* Add this */
+        }
+
+        .rain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .drop {
+            position: absolute;
+            width: 2px;
+            height: 100px;
+            background: linear-gradient(transparent, var(--accent-red));
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(-100px); opacity: 0; }
+            10% { opacity: 1; }
+            100% { transform: translateY(100vh); opacity: 0.5; }
+        }
+
+        .profile-container {
+            background-color: var(--darker-bg);
+            border-radius: 20px;
+            padding: 3rem;
+            max-width: 600px;
+            width: 90%;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 0 30px rgba(255, 51, 51, 0.2);
+            animation: fadeIn 1s ease-out;
+        }
+
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 3px solid var(--accent-red);
+            margin-bottom: 2rem;
+            animation: pulse 2s infinite;
+        }
+
+        .developer-name {
+            font-size: 2.5rem;
+            color: var(--accent-red);
+            margin-bottom: 1rem;
+        }
+
+        .developer-title {
+            font-size: 1.2rem;
+            color: #888;
+            margin-bottom: 2rem;
+        }
+
+        .developer-bio {
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-button {
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            color: var(--text-white);
+            background-color: var(--accent-red);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .social-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(255, 51, 51, 0.3);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(255, 51, 51, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(255, 51, 51, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 51, 51, 0); }
+        }
+
+        @media (max-width: 768px) {
+            .profile-container {
+                padding: 2rem;
+            }
+            .developer-name {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="rain"></div>
+    
+    <div class="profile-container">
+        <img src="img/thisu.jpg" alt="Developer" class="profile-image">
+        <h1 class="developer-name">@ThiZaru</h1>
+        <p class="developer-title">Founder Fast-X</p>
+        
+        <p class="developer-bio">
+            Introduce free internet methods & manage servers (Linod,Azure etc)
+        </p>
+
+        <div class="social-links">
+            <a href="https://wa.me/94770557769" class="social-button">
+                <i class="fab fa-whatsapp"></i>
+                WhatsApp
+            </a>
+            <a href="https://www.facebook.com/thisaruudara.x" class="social-button">
+                <i class="fab fa-facebook"></i>
+                Facebook
+            </a>
+            <a href="fast-x.shop" class="social-button">
+                <i class="fas fa-globe"></i>
+                Website
+            </a>
+        </div>
+    </div>
+
+    <div class="profile-container">
+        <img src="img/shan.jpg" alt="Developer" class="profile-image">
+        <h1 class="developer-name">@Data_Lokka</h1>
+        <p class="developer-title">Founder-EVOZI ,Partner-Fast-x,Luvera</p>
+        
+        <p class="developer-bio">
+           The heart readig brand in srilanka<br>
+          <ul>
+            <li>EVOZI Development(Web designer,UI/UI Designer)</li>
+            <li>EVOZI Creations(Music,Short films,Ads,Grapic design,Video Editing,Aimations)</li>
+            
+          </ul>
+          </ul>
+          </ul>
+        </p>
+
+        <div class="social-links">
+            <a href="https://wa.me/94718774025" class="social-button">
+                <i class="fab fa-whatsapp"></i>
+                WhatsApp
+            </a>
+            <a href="https://facebook.com/your.profile" class="social-button">
+                <i class="fab fa-facebook"></i>
+                Facebook
+            </a>
+            <a href="evozi.store" class="social-button">
+                <i class="fas fa-globe"></i>
+                Website
+            </a>
+        </div>
+    </div>
+    
+<dev></dev>
+    
+    
+
+    <script>
+        function createRain() {
+            const rainContainer = document.querySelector('.rain');
+            const drops = 100;
+
+            for(let i = 0; i < drops; i++) {
+                const drop = document.createElement('div');
+                drop.className = 'drop';
+                drop.style.left = `${Math.random() * 100}%`;
+                drop.style.animationDuration = `${Math.random() * 1 + 0.5}s`;
+                drop.style.animationDelay = `${Math.random() * 2}s`;
+                rainContainer.appendChild(drop);
+            }
+        }
+
+        createRain();
+    </script>
+</body>
+</html>
